@@ -22,7 +22,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         
         searchBar.delegate = self
-        searchBar = UISearchBar()
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
@@ -88,7 +87,15 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         )
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
     
     /*
      // MARK: - Navigation
